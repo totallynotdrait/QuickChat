@@ -34,6 +34,7 @@ class QuickChat(App):
                 mv.write_onview(USERNAME, message)
             except Exception as e:
                 logger.error(f"Failed to send message: {e}")
+                mv.write_error(f"Failed to send message: {e}\nServer may be down.")
         else:
             logger.warning("Empty message")
 
@@ -87,6 +88,7 @@ class QuickChat(App):
         mv = self.query_one(MessageView)
 
         try:
+            self.sub_title = f"Connecting to {HOST}:{PORT}"
             self.client.connect((HOST, PORT))
             mv.write_onview_server("Connected to server")
             self.sub_title = f"Connected to {HOST}:{PORT}"
@@ -148,6 +150,7 @@ class QuickChatWS(QuickChat):
                     self.call_from_thread(mv.write_onview_server, message)
         except Exception as e:
             logger.error(f"WebSocket listener error: {e}")
+            mv.write_error(f"WebSocket listener error: {e}\nServer may be down.")
 
     async def main_ws(self):
         global mv

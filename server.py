@@ -5,7 +5,7 @@ import threading
 
 # setup
 AF = socket.AF_INET  # Use socket.AF_INET for IPv4
-HOST = "127.0.0.1"
+HOST = "192.168.1.237"
 PORT = 12345  # Use a different port number
 LISTENER_LIMIT = 13
 MESSAGE_LIMIT = 2048
@@ -24,7 +24,7 @@ def listen_for_messages(client, username):
                 client.close()
 
                 active_clients.remove((username, client))
-                send_message_to_all(f"[Server]: {username} left the chat.")
+                send_message_to_all(f"[Server]: [bold]{username}[/] left the chat.")
                 break
         except Exception as e:
             print(f"An error occurred with client {username}: {e}")
