@@ -4,9 +4,9 @@ import asyncio
 import websockets
 
 PORT = 8765
-connected_users = {}  # {websocket: username}
+connected_users = {}
 
-async def handler(websocket, path=None):  # Rendi 'path' opzionale
+async def handler(websocket, path=None):
     try:
         username = await websocket.recv()
         connected_users[websocket] = username
@@ -32,12 +32,12 @@ async def broadcast(message):
         try:
             await user.send(message)
         except:
-            pass  # Handle send errors gracefully
+            pass
 
 async def main():
-    async with websockets.serve(handler, "localhost", PORT):  # ✅ correct usage
+    async with websockets.serve(handler, "localhost", PORT):
         print(f"WebSocket server running on ws://localhost:{PORT}")
-        await asyncio.Future()  # Run forever
+        await asyncio.Future()
 
 if __name__ == "__main__":
     asyncio.run(main())
