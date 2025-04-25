@@ -6,13 +6,12 @@ An easy-to-use server and client for local chatting with Python Socket or with W
 
 Both Python Socket and Web Socket servers are written in Python
 
-This repository includes a client to connect Python Socket or Web Socket server
-
-# Installation
-### Server
+# Installation and Usage
 - Clone repository `https://github.com/totallynotdrait/QuickChat`
-- To start a Python Socket do `python server.py`, it will start on a local IP server (127.0.0.1) on port 12345
-- To start a Web Socket do `python webserver.py`, it will start a server at `wb://localhost:8765`
+- Install Python requirements `pip install -r requirements.txt`
+### Server
+- To start a Python Socket server do `python server.py`, it will start on a local IP server (127.0.0.1) on port 12345
+- To start a Web Socket server do `python webserver.py`, it will start a server at `ws://localhost:8765`
 
 ### Client
 The included client is built with [Textual](https://github.com/Textualize/textual), it provides basic connection to Python Socket or Web Socket servers
