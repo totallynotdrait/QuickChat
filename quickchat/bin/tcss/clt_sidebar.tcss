@@ -1,0 +1,8 @@
+ConnectedOnServer {
+    dock: left;
+    width: 40;
+    background: dodgerblue;
+    transition: offset 500ms in_out_cubic;
+    color: #0f2b41;
+    height: 100%;
+}
